@@ -1,1 +1,3 @@
-# gidispot
+# Gidispot
+
+## Show Lagos Living
