@@ -1,1 +1,5 @@
-/posts https://gidispot-project.herokuapp.com/posts 200!
+[[redirects]]
+  from = "/posts"
+  to = "https://gidispot-project.herokuapp.com/posts"
+  status = 200
+  force = true
