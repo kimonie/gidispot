@@ -15,7 +15,11 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true}));
 app.use(cors());
 
 
-app.use('/posts', postRoutes)
+app.use('/posts', postRoutes);
+
+app.get('/', (req, res) => {
+    res.send('Hello to GidiSpot API');
+});
 
 // const CONNECTION_URL =  'mongodb+srv://kimonie:uzLrlRVr8Uiya9On@cluster0.pvah8dk.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
