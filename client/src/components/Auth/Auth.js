@@ -30,6 +30,7 @@ const Auth = () => {
   }
 
   const googleSuccess = async (res) => {
+    console.log(res)
     const result = res?.profileObj;
     const token = res?.tokenId;
 
@@ -40,7 +41,6 @@ const Auth = () => {
     }
   }
   
-
   const googleFailure = (error) => {
     console.log(error);
     console.log('Google Sign In was unsuccessful. Try Again Later');

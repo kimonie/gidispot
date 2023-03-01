@@ -1,12 +1,17 @@
-import { AUTH, LOGOUT } from '../constants/actionTypes';// eslint-disable-next-line
+import { AUTH, LOGOUT } from '../constants/actionTypes';
 
-export const authReducer = (state, action) => {
-    switch (action.type)) {
+export const authReducer = (state = { authData: null }, action) => {
+    switch (action.type) {
         case AUTH:
-            
-            break;
+            localStorage.setItem('profile', JSON.stringify( 'profile', JSON.stringify({ ...action?.data }) ))
+            return { ...state, authData: action?.data };
+
+        // case LOGOUT:
+        //     break;
     
         default:
-            break;
+            return state;
     }
 }
+
+export default authReducer;
