@@ -8,29 +8,39 @@ import Icon from './icon';
 import LockOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import useStyles from './styles';
 import Input from './Input';
+inpyr {signin, signup } from '../../actions/auth'
+const initialState = {firstname: '', lastname: '', email: '',  password: '', confirmPassword: ''}
 
 const Auth = () => {
   const classes = useStyles();
   const [ showPassword, setShowPassword ] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
   
 
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  }
+    if(isSignup) {
+      dispatch(signup(formData, History))
+    } else {
+      dispatch(signin(formData, history))
+    }
+  };
 
-  const handleChange = () => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
-  }
+  };
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup );
     handleShowPassword(false)
-  }
+  };
 
   const googleSuccess = async (res) => {
     console.log(res)
@@ -47,8 +57,8 @@ const Auth = () => {
   }
   
   const googleFailure = (error) => {
-    console.log(error);
-    console.log('Google Sign In was unsuccessful. Try Again Later');
+    // console.log(error);
+    // console.log('Google Sign In was unsuccessful. Try Again Later');
   }
 
   return (
