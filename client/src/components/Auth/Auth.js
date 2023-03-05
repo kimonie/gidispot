@@ -8,8 +8,9 @@ import Icon from './icon';
 import LockOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import useStyles from './styles';
 import Input from './Input';
-inpyr {signin, signup } from '../../actions/auth'
-const initialState = {firstname: '', lastname: '', email: '',  password: '', confirmPassword: ''}
+import {signin, signup } from '../../actions/auth';
+
+const initialState = {firstName: '', lastName: '', email: '',  password: '', confirmPassword: ''}
 
 const Auth = () => {
   const classes = useStyles();
@@ -26,7 +27,7 @@ const Auth = () => {
     e.preventDefault();
 
     if(isSignup) {
-      dispatch(signup(formData, History))
+      dispatch(signup(formData, history))
     } else {
       dispatch(signin(formData, history))
     }
@@ -50,9 +51,9 @@ const Auth = () => {
     try {
       dispatch({ type: 'AUTH', data: { result, token}  });
 
-      history.push('/')
+      history.push('/');
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
   
@@ -73,8 +74,8 @@ const Auth = () => {
               {
                 isSignup && (
                   <>
-                    <Input name='firstname' label="First Name" handleChange={handleChange} autoFocus half />
-                    <Input name='lastname' label="Last Name" handleChange={handleChange} half />
+                    <Input name='firstName' label="First Name" handleChange={handleChange} autoFocus half />
+                    <Input name='lastName' label="Last Name" handleChange={handleChange} half />
                   </>
                 )
               }
