@@ -1,13 +1,15 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import User from '../models/user';
+import User from '../models/user.js';
 
 const secret = 'test';
 
 export const signin = async (req, res) => {
     const { email, password } = req.body;
 
+    console.log(`from server end:  ${req.body}`)
+    
     try {
         const existingUser = await User.findOne({ email });
 
@@ -24,14 +26,14 @@ export const signin = async (req, res) => {
         res.status(200).json({ result: existingUser, token });
             
     } catch (error) {
-        res.status(500).json({messgae: "Something went wrong"})
+        res.status(500).json({message: "Something went wrong"})
     }
 }
 
 
 
 export const signup = async (req, res) => {
-    const { email, password, confirmPassword, firstName, LastName } = req.body;
+    const { email, password, confirmPassword, firstName, lastName } = req.body;
 
     try {
         
